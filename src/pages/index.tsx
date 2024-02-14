@@ -1,7 +1,5 @@
-import Home from "@/pageComponents/Home";
-
-export function HomePage() {
-  return <Home />;
+export function IndexPage() {
+  return <></>;
 }
 
-export default HomePage;
+export default IndexPage;

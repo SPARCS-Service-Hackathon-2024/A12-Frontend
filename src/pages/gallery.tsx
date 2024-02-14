@@ -1,3 +1,6 @@
+import { ReactNode } from "react";
+
+import { Layout } from "@/components";
 import Gallery from "@/pageComponents/Gallery";
 
 function GalleryPage() {
@@ -5,3 +8,7 @@ function GalleryPage() {
 }
 
 export default GalleryPage;
+
+GalleryPage.getLayout = (page: ReactNode) => {
+  return <Layout>{page}</Layout>;
+};

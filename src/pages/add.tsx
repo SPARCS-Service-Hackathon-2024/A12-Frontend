@@ -1,3 +1,6 @@
+import { ReactNode } from "react";
+
+import { Layout } from "@/components";
 import Add from "@/pageComponents/Add";
 
 function AddPage() {
@@ -5,3 +8,7 @@ function AddPage() {
 }
 
 export default AddPage;
+
+AddPage.getLayout = (page: ReactNode) => {
+  return <Layout>{page}</Layout>;
+};
