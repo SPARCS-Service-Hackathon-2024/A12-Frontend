@@ -13,6 +13,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 import { FamilyPosition } from "@/types";
+import FamilyPositionForm from "./FamilyPositionForm";
 
 export interface RegisterProps {}
 
@@ -69,38 +70,10 @@ function Register({}: RegisterProps) {
           placeholderText="birth"
         />
 
-        <FormLabel>Position</FormLabel>
-        <RadioGroup
-          onChange={handlePositionChange}
+        <FamilyPositionForm
           value={position}
-        >
-          <Stack direction="row">
-            <Radio value={FamilyPosition.MOTHER}>
-              엄마
-            </Radio>
-            <Radio value={FamilyPosition.FATHER}>
-              아빠
-            </Radio>
-            <Radio value={FamilyPosition.M_MOTHER}>
-              외할머니
-            </Radio>
-            <Radio value={FamilyPosition.M_FATHER}>
-              외할아버지
-            </Radio>
-            <Radio value={FamilyPosition.F_MOTHER}>
-              친할머니
-            </Radio>
-            <Radio value={FamilyPosition.F_FATHER}>
-              친할아버지
-            </Radio>
-            <Radio value={FamilyPosition.CHILD_1}>
-              첫째
-            </Radio>
-            <Radio value={FamilyPosition.CHILD_2}>
-              둘째
-            </Radio>
-          </Stack>
-        </RadioGroup>
+          onChange={handlePositionChange}
+        />
 
         <Button onClick={handleRegister}>register</Button>
       </FormControl>
