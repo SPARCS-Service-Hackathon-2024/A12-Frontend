@@ -1,0 +1,16 @@
+{
+  "name": "A12",
+  "short_name": "A12",
+  "description": "SPARCS A12 ",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff",
+  "theme_color": "#fff",
+  "icons": [
+    {
+      "src": "/images/icons/app_icon.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
+}
