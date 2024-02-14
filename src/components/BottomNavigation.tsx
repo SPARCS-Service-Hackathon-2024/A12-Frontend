@@ -26,7 +26,7 @@ function BottomNavigation({}: BottomNavigationProps) {
       <Box>
         <Button
           variant="ghost"
-          onClick={() => navigateTo("/")}
+          onClick={() => navigateTo("/home")}
         >
           <FaHome />
           <Text>Home</Text>

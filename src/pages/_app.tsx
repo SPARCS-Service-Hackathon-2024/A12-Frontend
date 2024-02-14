@@ -1,16 +1,26 @@
+import { NextPage } from "next";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
+import { ReactElement, ReactNode } from "react";
 import { ChakraProvider } from "@chakra-ui/react";
-import { BottomNavigation } from "@/components";
+
+type NextPageWithLayout = NextPage & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
 
 export default function App({
-  Component,
+  Component: Page,
   pageProps,
-}: AppProps) {
+}: AppPropsWithLayout) {
+  const getLayout = Page.getLayout ?? ((page) => page);
+
   return (
     <ChakraProvider>
-      <Component {...pageProps} />
-      <BottomNavigation />
+      {getLayout(<Page {...pageProps} />)}
     </ChakraProvider>
   );
 }
