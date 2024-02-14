@@ -4,13 +4,17 @@ import { Box } from "@chakra-ui/react";
 
 export interface LayoutProps {
   children: ReactNode;
+  withBottomNavigation?: boolean;
 }
 
-function Layout({ children }: LayoutProps) {
+function Layout({
+  children,
+  withBottomNavigation = false,
+}: LayoutProps) {
   return (
     <Box h={"100vh"}>
       {children}
-      <BottomNavigation />
+      {withBottomNavigation && <BottomNavigation />}
     </Box>
   );
 }

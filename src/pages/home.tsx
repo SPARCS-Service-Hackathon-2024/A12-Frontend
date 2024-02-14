@@ -10,5 +10,5 @@ export function HomePage() {
 export default HomePage;
 
 HomePage.getLayout = (page: ReactNode) => {
-  return <Layout>{page}</Layout>;
+  return <Layout withBottomNavigation>{page}</Layout>;
 };

@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 import { Layout } from "@/components";
-import Add from "@/pageComponents/Add";
+import Add from "@/pageComponents/Add/Add";
 
 function AddPage() {
   return <Add />;
