@@ -7,11 +7,11 @@ export interface User {
 }
 
 export interface CreateUserPayload {
-  familyName?: string;
-  name?: string;
-  birth?: Date;
-  gender?: Gender;
-  position?: FamilyPosition;
+  familyName: string | null;
+  name: string | null;
+  birth: Date | null;
+  gender?: Gender | null;
+  position: FamilyPosition | null;
 }
 
 export enum Gender {

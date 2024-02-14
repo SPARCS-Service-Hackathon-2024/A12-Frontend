@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { BottomNavigation } from ".";
+import { Box } from "@chakra-ui/react";
 
 export interface LayoutProps {
   children: ReactNode;
@@ -7,10 +8,10 @@ export interface LayoutProps {
 
 function Layout({ children }: LayoutProps) {
   return (
-    <div>
+    <Box h={"100vh"}>
       {children}
       <BottomNavigation />
-    </div>
+    </Box>
   );
 }
 
