@@ -1,6 +1,8 @@
 import { ReactNode } from "react";
-import { BottomNavigation } from ".";
 import { Box } from "@chakra-ui/react";
+
+import Header from "./Header";
+import BottomNavigation from "./BottomNavigation";
 
 export interface LayoutProps {
   children: ReactNode;
@@ -12,8 +14,16 @@ function Layout({
   withBottomNavigation = false,
 }: LayoutProps) {
   return (
-    <Box h={"100vh"}>
-      {children}
+    <Box h={"100vh"} overflow={"hidden"}>
+      <Header />
+      <Box
+        marginTop={"56px"}
+        h={`calc(100% - ${
+          56 + (withBottomNavigation ? 60 : 0)
+        }px)`}
+      >
+        {children}
+      </Box>
       {withBottomNavigation && <BottomNavigation />}
     </Box>
   );
