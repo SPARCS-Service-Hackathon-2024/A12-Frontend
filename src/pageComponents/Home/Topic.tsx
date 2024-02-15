@@ -7,6 +7,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import Tag from "./Tag";
+import { useRouter } from "next/router";
 
 export interface TopicProps {
   title: string;
@@ -14,6 +15,12 @@ export interface TopicProps {
 }
 
 function Topic({ title, tags }: TopicProps) {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(`/add?title=${title}`);
+  };
+
   return (
     <Flex
       w={"100%"}
@@ -27,6 +34,7 @@ function Topic({ title, tags }: TopicProps) {
       boxShadow={
         "0px 2px 8px 0px rgba(217, 217, 217, 0.15);"
       }
+      onClick={handleClick}
     >
       <VStack align={"flex-start"}>
         <Text fontSize={"14px"} fontWeight={600}>

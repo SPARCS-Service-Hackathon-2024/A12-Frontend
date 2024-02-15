@@ -4,12 +4,24 @@ import { useState } from "react";
 
 import ChatInput from "./ChatInput";
 import AddHeader from "./AddHeader";
+import { useRouter } from "next/router";
 
 export interface AddProps {}
 
 function Add({}: AddProps) {
+  const router = useRouter();
+  const { query } = router;
+
   const [isWaitingReply, setIsWaitingReply] =
     useState(false);
+
+  const firstMessage = query.title
+    ? {
+        text: query.title as string,
+        isBot: true,
+      }
+    : defaultMessage;
+
   const [messages, setMessages] = useState<Message[]>([
     firstMessage,
   ]);
@@ -64,7 +76,7 @@ function Add({}: AddProps) {
 
 export default Add;
 
-const firstMessage = {
+const defaultMessage = {
   text: "안녕하세요",
   isBot: true,
 };

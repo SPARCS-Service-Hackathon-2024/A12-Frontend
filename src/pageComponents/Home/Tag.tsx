@@ -1,3 +1,4 @@
+import { redPointColor } from "@/constants/color";
 import { Box, Flex, Text } from "@chakra-ui/react";
 
 export interface TagProps {
@@ -11,10 +12,13 @@ function Tag({ name }: TagProps) {
       px={"8px"}
       borderRadius={"6px"}
       align={"center"}
-      background={"rgba(238, 68, 43, 0.70)"}
+      borderWidth={"1px"}
+      borderStyle={"solid"}
+      borderColor={redPointColor}
+      background={"rgba(255, 238, 166, 0.40)"}
     >
       <Text
-        color={"white"}
+        color={redPointColor}
         fontSize={"10px"}
         fontWeight={500}
       >
