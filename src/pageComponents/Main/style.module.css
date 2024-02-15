@@ -1,0 +1,26 @@
+.linedtext {
+  position: relative;
+  display: inline-block;
+  color: #bababa;
+}
+
+.linedtext::before,
+.linedtext::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: calc(50% - 52px);
+  border-bottom: 1px solid #bababa; /* 원하는 선 스타일 및 두께로 변경 가능 */
+}
+
+.linedtext::before {
+  left: 0;
+}
+
+.linedtext::after {
+  right: 0;
+}
+
+.bold {
+  font-weight: 600;
+}
