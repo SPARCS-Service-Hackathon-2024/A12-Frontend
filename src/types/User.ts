@@ -7,11 +7,12 @@ export interface User {
 }
 
 export interface CreateUserPayload {
-  familyName: string | null;
-  name: string | null;
-  birth: Date | null;
-  gender?: Gender | null;
-  position: FamilyPosition | null;
+  phoneNumber: string;
+  password: string;
+  userName: string;
+  birthday: string;
+  familyName: string;
+  familyPassword: string;
 }
 
 export enum Gender {
