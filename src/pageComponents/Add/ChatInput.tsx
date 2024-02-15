@@ -1,8 +1,7 @@
-import {
-  Flex,
-  IconButton,
-  Textarea,
-} from "@chakra-ui/react";
+import { Center, Flex, IconButton } from "@chakra-ui/react";
+import TextareaAutosize, {
+  TextareaAutosizeProps,
+} from "react-textarea-autosize";
 import {
   ChangeEvent,
   Dispatch,
@@ -10,8 +9,9 @@ import {
   useState,
 } from "react";
 import { FaArrowRight } from "react-icons/fa";
-import RecordingButton from "./RecordingButton";
 import axios from "axios";
+
+import RecordingButton from "./RecordingButton";
 import { Message } from "@/components";
 
 export interface ChatInputProps {
@@ -70,14 +70,23 @@ function ChatInput({
   };
 
   return (
-    <Flex w={"100%"} maxH={"100px"}>
-      <Textarea value={text} onChange={handleInputChange} />
+    <Flex px={"12px"} w={"100%"} maxH={"100px"}>
+      <Center
+        w={"40px"}
+        h={"40px"}
+        borderRadius={"50%"}
+      ></Center>
+      <TextareaAutosize
+        minRows={1}
+        maxRows={4}
+        value={text}
+        onChange={handleInputChange}
+      />
       <IconButton
         aria-label={"send"}
         icon={<FaArrowRight />}
         onClick={handleSendClick}
       />
-      <RecordingButton />
     </Flex>
   );
 }

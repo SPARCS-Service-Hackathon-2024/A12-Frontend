@@ -9,3 +9,7 @@ export { default as DefaultAvatar } from "./default_avatar.svg";
 export { default as ReloadIcon } from "./reload.svg";
 export { default as ArrowForwardIcon } from "./arrow_forward.svg";
 export { default as ArrowBackIcon } from "./arrow_back.svg";
+export { default as AttachFileIcon } from "./attach_file.svg";
+export { default as RecordingButtonIcon } from "./recording_button.svg";
+export { default as SendButtonIcon } from "./send_button.svg";
+export { default as SendIcon } from "./send.svg";
