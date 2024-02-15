@@ -3,6 +3,7 @@ import { Message, MessageBox } from "@/components";
 import { useState } from "react";
 
 import ChatInput from "./ChatInput";
+import AddHeader from "./AddHeader";
 
 export interface AddProps {}
 
@@ -15,12 +16,18 @@ function Add({}: AddProps) {
 
   return (
     <Flex
-      h={"100%"}
-      px={"12px"}
-      position={"relative"}
+      h={"100vh"}
       direction={"column"}
+      position={"relative"}
     >
-      <Box flex={1} w={"100%"} overflow={"scroll"}>
+      <AddHeader />
+
+      <Box
+        flex={1}
+        w={"100%"}
+        px={"12px"}
+        overflow={"scroll"}
+      >
         {messages.map((message, idx, arr) => (
           <MessageBox
             key={idx}

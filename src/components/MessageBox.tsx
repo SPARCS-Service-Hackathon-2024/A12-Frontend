@@ -4,6 +4,7 @@ import {
   Box,
   Flex,
   Spinner,
+  Text,
 } from "@chakra-ui/react";
 
 export type Message = {
@@ -23,36 +24,52 @@ function MessageBox({
 
   return (
     <Flex
-      gap={"8px"}
-      direction={isBot ? "row" : "row-reverse"}
       mb={"12px"}
+      gap={"8px"}
+      align={"flex-start"}
+      direction={isBot ? "row" : "row-reverse"}
     >
       <Avatar
         w={"48px"}
         h={"48px"}
-        src="https://bit.ly/broken-link"
+        src={
+          isBot
+            ? "/images/ggirok.png"
+            : "https://bit.ly/broken-link"
+        }
       />
       <Box
         px={"16px"}
         py={"10px"}
         borderRadius={"10px"}
-        border={"1px solid"}
-        borderColor={"#eaeaea"}
         {...(isBot
           ? {
               borderTopLeftRadius: "0px",
               bg: "white",
               color: "black",
+              border: "1px solid",
+              borderColor: "#eaeaea",
             }
           : {
               borderTopRightRadius: "0px",
               bg: redPointColor,
               color: "white",
             })}
-        maxW={"80%"}
+        maxW={"75%"}
         bg={isBot ? "white" : redPointColor}
       >
-        {isWaitingReply ? <Spinner /> : text}
+        {isWaitingReply ? (
+          <Spinner />
+        ) : (
+          <Text
+            fontSize={"14px"}
+            fontWeight={500}
+            lineHeight={"140%"}
+            color={isBot ? "#3C3C3C" : "white"}
+          >
+            {text}
+          </Text>
+        )}
       </Box>
     </Flex>
   );
