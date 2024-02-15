@@ -1,4 +1,3 @@
-import { redPointColor } from "@/constants/color";
 import {
   Avatar,
   Box,
@@ -6,6 +5,12 @@ import {
   Spinner,
   Text,
 } from "@chakra-ui/react";
+import ReactLoading from "react-loading";
+
+import {
+  greenPointColor,
+  redPointColor,
+} from "@/constants/color";
 
 export type Message = {
   text: string;
@@ -38,9 +43,11 @@ function MessageBox({
             : "/images/user_ggirok.png"
         }
       />
-      <Box
+      <Flex
         px={"16px"}
         py={"10px"}
+        align={"center"}
+        minH={"40px"}
         borderRadius={"10px"}
         {...(isBot
           ? {
@@ -59,7 +66,12 @@ function MessageBox({
         bg={isBot ? "white" : redPointColor}
       >
         {isWaitingReply ? (
-          <Spinner />
+          <ReactLoading
+            width={"20px"}
+            height={"20px"}
+            type={"balls"}
+            color={greenPointColor}
+          />
         ) : (
           <Text
             fontSize={"14px"}
@@ -70,7 +82,7 @@ function MessageBox({
             {text}
           </Text>
         )}
-      </Box>
+      </Flex>
     </Flex>
   );
 }

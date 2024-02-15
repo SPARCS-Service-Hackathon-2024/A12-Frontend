@@ -20,13 +20,13 @@ export interface BottomNavigationProps {}
 
 function BottomNavigation({}: BottomNavigationProps) {
   const router = useRouter();
-  const { pathname } = router;
+  const { pathname, query } = router;
 
   const isHomePage = pathname.includes("/home");
   const isGalleryPage = pathname.includes("/gallery");
 
   const navigateTo = (path: string) => () => {
-    router.push(path);
+    router.push({ pathname: path, query });
   };
 
   return (

@@ -8,6 +8,7 @@ import {
 } from "react";
 import axios from "axios";
 import styled from "@emotion/styled";
+import { useRouter } from "next/router";
 
 import { Message } from "@/components";
 import {
@@ -17,14 +18,20 @@ import {
 } from "@/svg";
 
 export interface ChatInputProps {
-  setIsWaitingReply: Dispatch<SetStateAction<boolean>>;
+  messages: Message[];
+  setIsEnd: Dispatch<SetStateAction<boolean>>;
   setMessages: Dispatch<SetStateAction<Message[]>>;
+  setIsWaitingReply: Dispatch<SetStateAction<boolean>>;
 }
 
 function ChatInput({
-  setIsWaitingReply,
+  messages,
+  setIsEnd,
   setMessages,
+  setIsWaitingReply,
 }: ChatInputProps) {
+  const router = useRouter();
+
   const [text, setText] = useState<string>("");
   const isTexting = text.trim() !== "";
 
@@ -35,6 +42,8 @@ function ChatInput({
   };
 
   const handleSendClick = async () => {
+    const first_chatting = messages.length === 1;
+
     const newUserMessage: Message = {
       text,
       isBot: false,
@@ -50,12 +59,12 @@ function ChatInput({
       newUserMessage,
       newBotMessage,
     ]);
-
     setIsWaitingReply(true);
+
     const payload = {
-      user: "user1",
+      phoneNumber: router.query.phoneNumber,
       text,
-      first_chatting: false,
+      first_chatting,
       is_text: true,
     };
 
@@ -63,13 +72,19 @@ function ChatInput({
 
     setMessages((prev) => {
       const lastBotMessage = prev.pop()!;
-      lastBotMessage.text = data.text;
+      lastBotMessage.text = data.is_end
+        ? "다음에 또 이야기 들려주세요. 안녕히 계세요."
+        : data.text;
       prev.push(lastBotMessage);
 
       return prev;
     });
 
     setIsWaitingReply(false);
+
+    if (data.is_end) {
+      setIsEnd(true);
+    }
   };
 
   const handleRecordClick = () => {};

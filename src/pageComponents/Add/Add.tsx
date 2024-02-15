@@ -5,6 +5,7 @@ import { useState } from "react";
 import ChatInput from "./ChatInput";
 import AddHeader from "./AddHeader";
 import { useRouter } from "next/router";
+import EndProcess from "./EndProcess";
 
 export interface AddProps {}
 
@@ -14,6 +15,7 @@ function Add({}: AddProps) {
 
   const [isWaitingReply, setIsWaitingReply] =
     useState(false);
+  const [isEnd, setIsEnd] = useState(false);
 
   const firstMessage = query.title
     ? {
@@ -65,10 +67,14 @@ function Add({}: AddProps) {
             }
           />
         ))}
+
+        {isEnd && <EndProcess />}
       </Box>
       <ChatInput
-        setIsWaitingReply={setIsWaitingReply}
+        messages={messages}
+        setIsEnd={setIsEnd}
         setMessages={setMessages}
+        setIsWaitingReply={setIsWaitingReply}
       />
     </Flex>
   );

@@ -18,7 +18,10 @@ function Topic({ title, tags }: TopicProps) {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push(`/add?title=${title}`);
+    router.push({
+      pathname: "add",
+      query: { ...router.query, title },
+    });
   };
 
   return (

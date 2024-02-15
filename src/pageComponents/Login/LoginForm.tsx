@@ -27,7 +27,13 @@ function LoginForm({}: LoginProps) {
     console.log("res: ", res);
 
     if (res.status === 200) {
-      router.push("/home");
+      router.push({
+        pathname: "/home",
+        query: {
+          phoneNumber: values.phoneNumber,
+          familyName: res.data.user_info.familyName,
+        },
+      });
     } else {
       helper.setSubmitting(false);
     }
