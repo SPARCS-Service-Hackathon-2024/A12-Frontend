@@ -50,7 +50,7 @@ function Register({}: RegisterProps) {
   };
 
   return (
-    <Box h={"100vh"}>
+    <Box>
       <FormControl>
         <FormLabel>Name</FormLabel>
         <Input value={name} onChange={handleNameChange} />

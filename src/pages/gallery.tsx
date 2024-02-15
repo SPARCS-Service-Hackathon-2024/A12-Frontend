@@ -10,5 +10,5 @@ function GalleryPage() {
 export default GalleryPage;
 
 GalleryPage.getLayout = (page: ReactNode) => {
-  return <Layout>{page}</Layout>;
+  return <Layout withBottomNavigation>{page}</Layout>;
 };
