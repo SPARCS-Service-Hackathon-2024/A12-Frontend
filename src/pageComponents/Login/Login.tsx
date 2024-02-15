@@ -1,73 +1,28 @@
-import axios from "axios";
-import { useRouter } from "next/router";
-import { Button } from "@chakra-ui/react";
-import {
-  Formik,
-  Form,
-  FormikHelpers,
-  FormikErrors,
-} from "formik";
+import { Box } from "@chakra-ui/react";
 
-import { LoginUserPayload } from "@/types";
-import { InputField } from "@/components";
+import LoginForm from "./LoginForm";
 
 export interface LoginProps {}
 
 function Login({}: LoginProps) {
-  const router = useRouter();
-
-  const onSubmit = async (
-    values: LoginUserPayload,
-    helper: FormikHelpers<LoginUserPayload>
-  ) => {
-    const res = await axios.post("/login", values);
-    console.log("res: ", res);
-
-    if (res.status === 200) {
-      router.push("/home");
-    } else {
-      helper.setSubmitting(false);
-    }
-  };
-
   return (
-    <Formik<LoginUserPayload>
-      initialValues={initialValues}
-      onSubmit={onSubmit}
+    <Box
+      w={"100%"}
+      h={"100vh"}
+      position={"relative"}
+      backgroundSize={"contain"}
+      backgroundRepeat={"round"}
+      backgroundImage={"/images/login_background.png"}
     >
-      {({
-        values,
-        handleSubmit,
-        handleChange,
-        isSubmitting,
-      }) => (
-        <Form onSubmit={handleSubmit} autoComplete={"off"}>
-          <InputField
-            label={"전화번호"}
-            name={"phoneNumber"}
-            value={values.phoneNumber}
-            onChange={handleChange}
-          />
-          <InputField
-            label={"비밀번호"}
-            name={"password"}
-            type={"password"}
-            value={values.password}
-            onChange={handleChange}
-          />
-
-          <Button isLoading={isSubmitting} type="submit">
-            로그인
-          </Button>
-        </Form>
-      )}
-    </Formik>
+      <Box
+        w={"100%"}
+        bottom={"170px"}
+        position={"absolute"}
+      >
+        <LoginForm />
+      </Box>
+    </Box>
   );
 }
 
 export default Login;
-
-const initialValues = {
-  phoneNumber: "",
-  password: "",
-};

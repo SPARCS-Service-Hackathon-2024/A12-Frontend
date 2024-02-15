@@ -22,9 +22,10 @@ function Main({}: MainProps) {
     <Box
       w={"100%"}
       h={"100vh"}
-      backgroundSize={"contain"}
-      backgroundImage={"/images/main_background.png"}
       position={"relative"}
+      backgroundSize={"contain"}
+      backgroundRepeat={"round"}
+      backgroundImage={"/images/main_background.png"}
     >
       <Box
         left={"24px"}
