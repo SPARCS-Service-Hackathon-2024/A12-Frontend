@@ -1,16 +1,33 @@
 import axios from "axios";
 import * as Yup from "yup";
+import { useState } from "react";
 import { useRouter } from "next/router";
-import { Button } from "@chakra-ui/react";
-import { Formik, Form, FormikHelpers } from "formik";
+import { Box, Center } from "@chakra-ui/react";
+import { Formik, FormikHelpers } from "formik";
 
 import { CreateUserPayload } from "@/types";
-import { InputField } from "@/components";
+import RegisterForm1 from "./RegisterForm1";
+import RegisterForm2 from "./RegisterForm2";
+import {
+  ArrowBack2Icon,
+  CloseIcon,
+  Step1FillIcon,
+  Step1OutlineIcon,
+  Step2FillIcon,
+  Step2OutlineIcon,
+} from "@/svg";
 
 export interface RegisterProps {}
 
 function Register({}: RegisterProps) {
   const router = useRouter();
+
+  const [step, setStep] = useState<1 | 2>(1);
+  const isStep1 = step === 1;
+
+  const handleNextClick = () => {
+    setStep(2);
+  };
 
   const onSubmit = async (
     values: CreateUserPayload,
@@ -26,78 +43,81 @@ function Register({}: RegisterProps) {
   };
 
   return (
-    <Formik<CreateUserPayload>
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-      onSubmit={onSubmit}
-      validateOnBlur={false}
-      validateOnChange={false}
+    <Box
+      w={"100%"}
+      h={"100vh"}
+      position={"relative"}
+      backgroundSize={"contain"}
+      backgroundRepeat={"round"}
+      backgroundImage={`/images/register${step}_background.png`}
     >
-      {({
-        values,
-        handleSubmit,
-        handleChange,
-        errors,
-        isSubmitting,
-      }) => (
-        <Form onSubmit={handleSubmit} autoComplete={"off"}>
-          <InputField
-            label={"전화번호"}
-            name={"phoneNumber"}
-            value={values.phoneNumber}
-            onChange={handleChange}
-            placeholder="01012345678"
-            error={errors.phoneNumber}
-          />
-          <InputField
-            label={"비밀번호"}
-            name={"password"}
-            type={"password"}
-            value={values.password}
-            onChange={handleChange}
-            placeholder="********"
-            error={errors.password}
-          />
-          <InputField
-            label={"이름"}
-            name={"userName"}
-            value={values.userName}
-            onChange={handleChange}
-            placeholder={"홍길동"}
-            error={errors.userName}
-          />
-          <InputField
-            label={"생년월일"}
-            name={"birthday"}
-            value={values.birthday}
-            onChange={handleChange}
-            placeholder={"yyyy.mm.dd"}
-            error={errors.birthday}
-          />
-          <InputField
-            label={"가족 이름"}
-            name={"familyName"}
-            value={values.familyName}
-            onChange={handleChange}
-            placeholder={"끼록이네"}
-            error={errors.familyName}
-          />
-          <InputField
-            label={"가족 비밀번호"}
-            name={"familyPassword"}
-            type={"password"}
-            value={values.familyPassword}
-            onChange={handleChange}
-            placeholder={"****"}
-            error={errors.familyPassword}
-          />
-
-          <Button isLoading={isSubmitting} type="submit">
-            회원가입
-          </Button>
-        </Form>
-      )}
-    </Formik>
+      <Box
+        top={"20px"}
+        left={"20px"}
+        position={"absolute"}
+        onClick={() => setStep(1)}
+      >
+        <ArrowBack2Icon />
+      </Box>
+      <Box
+        top={"20px"}
+        right={"20px"}
+        position={"absolute"}
+        onClick={() => router.push("/")}
+      >
+        <CloseIcon />
+      </Box>
+      <Center
+        w={"100%"}
+        gap={"8px"}
+        top={"110px"}
+        position={"absolute"}
+      >
+        {isStep1 ? (
+          <>
+            <Step1FillIcon />
+            <Step2OutlineIcon />
+          </>
+        ) : (
+          <>
+            <Step1OutlineIcon />
+            <Step2FillIcon />
+          </>
+        )}
+      </Center>
+      <Formik<CreateUserPayload>
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={onSubmit}
+        validateOnBlur={false}
+        validateOnChange={false}
+      >
+        {({
+          values,
+          handleSubmit,
+          handleChange,
+          errors,
+          isSubmitting,
+        }) =>
+          isStep1 ? (
+            <RegisterForm1
+              values={values}
+              errors={errors}
+              handleChange={handleChange}
+              handleNextClick={handleNextClick}
+            />
+          ) : (
+            <RegisterForm2
+              values={values}
+              errors={errors}
+              isSubmitting={isSubmitting}
+              handleSubmit={handleSubmit}
+              handleChange={handleChange}
+            />
+          )
+        }
+      </Formik>
+    </Box>
   );
 }
 
