@@ -14,7 +14,11 @@ function Layout({
   withBottomNavigation = false,
 }: LayoutProps) {
   return (
-    <Box h={"100vh"} overflow={"hidden"}>
+    <Box
+      h={"100vh"}
+      overflow={"hidden"}
+      position={"relative"}
+    >
       <Header />
       <Box
         marginTop={"56px"}

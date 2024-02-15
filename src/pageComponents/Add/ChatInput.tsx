@@ -70,12 +70,7 @@ function ChatInput({
   };
 
   return (
-    <Flex
-      w={"100%"}
-      h={""}
-      position={"absolute"}
-      bottom={0}
-    >
+    <Flex w={"100%"} maxH={"100px"}>
       <Textarea value={text} onChange={handleInputChange} />
       <IconButton
         aria-label={"send"}

@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import { Message, MessageBox } from "@/components";
 import { useState } from "react";
 
@@ -14,21 +14,30 @@ function Add({}: AddProps) {
   ]);
 
   return (
-    <Box h={"100%"} position={"relative"}>
-      {messages.map((message, idx, arr) => (
-        <MessageBox
-          key={idx}
-          message={message}
-          isWaitingReply={
-            arr.length - 1 === idx ? isWaitingReply : false
-          }
-        />
-      ))}
+    <Flex
+      h={"100%"}
+      px={"12px"}
+      position={"relative"}
+      direction={"column"}
+    >
+      <Box flex={1} w={"100%"} overflow={"scroll"}>
+        {messages.map((message, idx, arr) => (
+          <MessageBox
+            key={idx}
+            message={message}
+            isWaitingReply={
+              arr.length - 1 === idx
+                ? isWaitingReply
+                : false
+            }
+          />
+        ))}
+      </Box>
       <ChatInput
         setIsWaitingReply={setIsWaitingReply}
         setMessages={setMessages}
       />
-    </Box>
+    </Flex>
   );
 }
 
