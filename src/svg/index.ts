@@ -20,3 +20,4 @@ export { default as Step2FillIcon } from "./step2_fill.svg";
 export { default as Step2OutlineIcon } from "./step2_outline.svg";
 export { default as CloseIcon } from "./close.svg";
 export { default as WarningIcon } from "./warning.svg";
+export { default as EditIcon } from "./edit.svg";
