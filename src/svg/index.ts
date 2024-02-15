@@ -25,3 +25,4 @@ export { default as EditIcon } from "./edit.svg";
 export { default as LoveIcon } from "./love.svg";
 export { default as PlayIcon } from "./play.svg";
 export { default as ShareIcon } from "./share.svg";
+export { default as SearchFakeIcon } from "./searchFake.svg";

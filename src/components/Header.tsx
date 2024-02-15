@@ -2,6 +2,7 @@ import { greenPointColor } from "@/constants/color";
 import {
   LogoGreenIcon,
   LogoIcon,
+  SearchFakeIcon,
   SideMenuIcon,
 } from "@/svg";
 import { Box, Flex, FlexProps } from "@chakra-ui/react";
@@ -35,7 +36,7 @@ function Header({ headerMode }: HeaderProps) {
       bg={"white"}
     >
       <LogoGreenIcon />
-      <SideMenuIcon />
+      <SearchFakeIcon />
     </Flex>
   );
 }
