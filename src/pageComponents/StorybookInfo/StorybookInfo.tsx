@@ -43,7 +43,12 @@ function StorybookInfo({}: StorybookProps) {
     >
       <StorybookHeader />
       <Box w={"100%"} mt={"56px"} flex={1}>
-        <Carousel showArrows={false}>
+        <Carousel
+          showArrows={false}
+          showThumbs={false}
+          showStatus={false}
+          showIndicators={false}
+        >
           {stories.map((story, idx) => (
             <StoryScene key={idx} story={story} />
           ))}

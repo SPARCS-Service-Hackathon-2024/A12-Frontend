@@ -4,6 +4,7 @@ import type { AppProps } from "next/app";
 import { ReactElement, ReactNode } from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import axios from "axios";
+import { API_ENDPOINT } from "@/constants/api";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -26,6 +27,4 @@ export default function App({
   );
 }
 
-axios.defaults.baseURL =
-  // "https://cqzmnhjdqqypdzqt.tunnel-pt.elice.io/proxy/5000";
-  "https://ckkzfwkxjrrfknrj.tunnel-pt.elice.io/proxy/5000/";
+axios.defaults.baseURL = API_ENDPOINT;

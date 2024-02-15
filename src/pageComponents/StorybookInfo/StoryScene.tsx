@@ -1,5 +1,7 @@
+import { API_ENDPOINT } from "@/constants/api";
+import { LoveIcon, PlayIcon, ShareIcon } from "@/svg";
 import { Story } from "@/types";
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Flex, HStack, Text } from "@chakra-ui/react";
 import Image from "next/image";
 
 export interface StorySceneProps {
@@ -18,8 +20,19 @@ function StoryScene({ story }: StorySceneProps) {
     wavUrl,
   } = story;
 
+  const handlePlayClick = () => {
+    const url = `${API_ENDPOINT}/${wavUrl}`;
+    var audio = new Audio(url);
+    audio.play();
+  };
+
   return (
-    <Box w={"100%"} h={"100%"} p={"20px"}>
+    <Box
+      w={"100%"}
+      h={"100%"}
+      p={"20px"}
+      position={"relative"}
+    >
       <Image
         width={350}
         height={350}
@@ -33,6 +46,28 @@ function StoryScene({ story }: StorySceneProps) {
       <Text fontSize={"16px"} color={"#bababa"}>
         {text}
       </Text>
+      <Flex
+        pt={"8px"}
+        h={"84px"}
+        w={"100%"}
+        position={"absolute"}
+        px={"20px"}
+        bottom={0}
+        left={0}
+        align={"flex-start"}
+        justify={"space-between"}
+        borderTopWidth={"1px"}
+        borderTopStyle={"solid"}
+        borderTopColor={"#EAEAEA"}
+      >
+        <HStack gap={"0px"}>
+          <ShareIcon width={"60px"} height={"60px"} />
+          <LoveIcon width={"60px"} height={"60px"} />
+        </HStack>
+        <Box onClick={handlePlayClick}>
+          <PlayIcon width={"52px"} height={"52px"} />
+        </Box>
+      </Flex>
     </Box>
   );
 }
