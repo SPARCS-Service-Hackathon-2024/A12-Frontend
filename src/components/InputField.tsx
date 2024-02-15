@@ -1,18 +1,25 @@
-import { Input, Text, VStack } from "@chakra-ui/react";
+import {
+  Input,
+  InputProps,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import { ChangeEventHandler } from "react";
 
 export interface InputFieldProps {
-  label: string;
+  label?: string;
+  type?: InputProps["type"];
   name: string;
   value: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
-  placeholder: string;
+  placeholder?: string;
   error?: string;
 }
 
 function InputField({
   label,
   name,
+  type,
   value,
   onChange,
   placeholder,
@@ -22,6 +29,7 @@ function InputField({
     <VStack align={"flex-start"}>
       <Text>{label}</Text>
       <Input
+        type={type}
         name={name}
         value={value}
         onChange={onChange}

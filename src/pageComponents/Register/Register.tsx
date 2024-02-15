@@ -44,6 +44,7 @@ function Register({}: RegisterProps) {
           <InputField
             label={"비밀번호"}
             name={"password"}
+            type={"password"}
             value={values.password}
             onChange={handleChange}
             placeholder="********"
@@ -76,6 +77,7 @@ function Register({}: RegisterProps) {
           <InputField
             label={"가족 비밀번호"}
             name={"familyPassword"}
+            type={"password"}
             value={values.familyPassword}
             onChange={handleChange}
             placeholder={"****"}
@@ -83,7 +85,7 @@ function Register({}: RegisterProps) {
           />
 
           <Button isLoading={isSubmitting} type="submit">
-            Submit
+            회원가입
           </Button>
         </Form>
       )}

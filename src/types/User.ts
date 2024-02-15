@@ -15,6 +15,11 @@ export interface CreateUserPayload {
   familyPassword: string;
 }
 
+export interface LoginUserPayload {
+  phoneNumber: string;
+  password: string;
+}
+
 export enum Gender {
   M = "male",
   F = "female",
