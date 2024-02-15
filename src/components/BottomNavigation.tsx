@@ -33,10 +33,6 @@ function BottomNavigation({}: BottomNavigationProps) {
     <Box
       px={"18px"}
       bg="white"
-      position="fixed"
-      bottom="0"
-      left="0"
-      right="0"
       height="83px"
       boxShadow={"0px -2px 8px 0px rgba(0, 0, 0, 0.10)"}
     >

@@ -1,21 +1,27 @@
+import { greenPointColor } from "@/constants/color";
+import { LogoIcon, SideMenuIcon } from "@/svg";
 import { Box, Flex, FlexProps } from "@chakra-ui/react";
 
 export interface HeaderProps {
-  bg?: FlexProps["bg"];
+  headerMode?: "home" | "gallery";
 }
 
-function Header({ bg }: HeaderProps) {
-  return (
+function Header({ headerMode }: HeaderProps) {
+  return headerMode === "home" ? (
     <Flex
-      h={"56px"}
+      px={"20px"}
+      h={"93px"}
+      pb={"22px"}
       justify={"space-between"}
-      align={"center"}
-      bg={bg}
-      position="absolute"
-      top="0"
-      left="0"
-      right="0"
-    ></Flex>
+      align={"flex-end"}
+      direction={"row"}
+      bg={greenPointColor}
+    >
+      <LogoIcon />
+      <SideMenuIcon />
+    </Flex>
+  ) : (
+    <Flex></Flex>
   );
 }
 

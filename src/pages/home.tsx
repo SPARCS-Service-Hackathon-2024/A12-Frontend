@@ -10,5 +10,9 @@ export function HomePage() {
 export default HomePage;
 
 HomePage.getLayout = (page: ReactNode) => {
-  return <Layout withBottomNavigation>{page}</Layout>;
+  return (
+    <Layout withBottomNavigation headerMode={"home"}>
+      {page}
+    </Layout>
+  );
 };

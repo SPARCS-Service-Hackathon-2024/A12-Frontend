@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Box } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 
 import Header from "./Header";
 import BottomNavigation from "./BottomNavigation";
@@ -7,29 +7,25 @@ import BottomNavigation from "./BottomNavigation";
 export interface LayoutProps {
   children: ReactNode;
   withBottomNavigation?: boolean;
+  headerMode?: "home" | "gallery";
 }
 
 function Layout({
   children,
   withBottomNavigation = false,
+  headerMode,
 }: LayoutProps) {
   return (
-    <Box
+    <Flex
       h={"100vh"}
+      direction={"column"}
       overflow={"hidden"}
       position={"relative"}
     >
-      <Header />
-      <Box
-        marginTop={"56px"}
-        h={`calc(100% - ${
-          56 + (withBottomNavigation ? 60 : 0)
-        }px)`}
-      >
-        {children}
-      </Box>
+      <Header headerMode={headerMode} />
+      <Box flex={1}>{children}</Box>
       {withBottomNavigation && <BottomNavigation />}
-    </Box>
+    </Flex>
   );
 }
 
