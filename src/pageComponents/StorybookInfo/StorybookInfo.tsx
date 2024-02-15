@@ -1,9 +1,12 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-
 import { Story, Storybook } from "@/types";
 import { Box, Flex } from "@chakra-ui/react";
+
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
+
 import StorybookHeader from "./StorybookHeader";
 import StoryScene from "./StoryScene";
 
@@ -39,10 +42,12 @@ function StorybookInfo({}: StorybookProps) {
       position={"relative"}
     >
       <StorybookHeader />
-      <Box mt={"56px"} flex={1} overflowX={"scroll"}>
-        {stories.map((story, idx) => (
-          <StoryScene key={idx} story={story} />
-        ))}
+      <Box w={"100%"} mt={"56px"} flex={1}>
+        <Carousel showArrows={false}>
+          {stories.map((story, idx) => (
+            <StoryScene key={idx} story={story} />
+          ))}
+        </Carousel>
       </Box>
     </Flex>
   );
