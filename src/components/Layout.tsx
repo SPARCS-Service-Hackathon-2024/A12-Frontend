@@ -19,11 +19,12 @@ function Layout({
     <Flex
       h={"100vh"}
       direction={"column"}
-      overflow={"hidden"}
       position={"relative"}
     >
       <Header headerMode={headerMode} />
-      <Box flex={1}>{children}</Box>
+      <Box flex={1} overflow={"hidden"}>
+        {children}
+      </Box>
       {withBottomNavigation && <BottomNavigation />}
     </Flex>
   );

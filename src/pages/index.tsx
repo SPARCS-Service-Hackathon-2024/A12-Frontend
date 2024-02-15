@@ -1,5 +1,24 @@
-export function IndexPage() {
-  return <></>;
+import { ReactNode } from "react";
+
+import { Layout } from "@/components";
+import Home from "@/pageComponents/Home";
+
+export function HomePage() {
+  return <Home />;
 }
 
-export default IndexPage;
+export default HomePage;
+
+HomePage.getLayout = (page: ReactNode) => {
+  return (
+    <Layout withBottomNavigation headerMode={"home"}>
+      {page}
+    </Layout>
+  );
+};
+
+// export function IndexPage() {
+//   return <></>;
+// }
+
+// export default IndexPage;
