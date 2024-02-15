@@ -14,6 +14,10 @@ export interface MainProps {}
 function Main({}: MainProps) {
   const router = useRouter();
 
+  const navigateTo = (path: string) => () => {
+    router.push(path);
+  };
+
   return (
     <Box
       w={"100%"}
@@ -49,6 +53,7 @@ function Main({}: MainProps) {
           bg={"white"}
           borderRadius={"10px"}
           border={"1px solid #bababa"}
+          onClick={navigateTo("/register")}
         >
           <Text
             color={greenPointColor}
@@ -70,6 +75,7 @@ function Main({}: MainProps) {
           w={"300px"}
           borderRadius={"10px"}
           border={"1px solid #bababa"}
+          onClick={navigateTo("/login")}
         >
           <Text
             color={"white"}
