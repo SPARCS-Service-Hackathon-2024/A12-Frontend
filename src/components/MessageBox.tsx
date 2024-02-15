@@ -24,7 +24,7 @@ function MessageBox({
 
   return (
     <Flex
-      mb={"12px"}
+      mb={"16px"}
       gap={"8px"}
       align={"flex-start"}
       direction={isBot ? "row" : "row-reverse"}
@@ -35,7 +35,7 @@ function MessageBox({
         src={
           isBot
             ? "/images/ggirok.png"
-            : "https://bit.ly/broken-link"
+            : "/images/user_ggirok.png"
         }
       />
       <Box

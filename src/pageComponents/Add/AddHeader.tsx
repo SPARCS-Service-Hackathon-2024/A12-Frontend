@@ -1,12 +1,12 @@
 import { ArrowBackIcon } from "@/svg";
-import { Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 
 export interface AddHeaderProps {}
 
 function AddHeader({}: AddHeaderProps) {
   return (
     <Flex
-      h={"80px"}
+      h={"56px"}
       w={"100%"}
       pt={"14px"}
       px={"18px"}
@@ -20,7 +20,7 @@ function AddHeader({}: AddHeaderProps) {
       >
         끼록이
       </Text>
-      <ArrowBackIcon />
+      <Box w={"24px"} />
     </Flex>
   );
 }

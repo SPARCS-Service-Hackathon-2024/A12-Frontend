@@ -1,4 +1,4 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import { Message, MessageBox } from "@/components";
 import { useState } from "react";
 
@@ -28,6 +28,20 @@ function Add({}: AddProps) {
         px={"12px"}
         overflow={"scroll"}
       >
+        <Text
+          w={"100%"}
+          fontSize={"12px"}
+          textAlign={"center"}
+          color={"#BABABA"}
+          mt={"4px"}
+          mb={"24px"}
+        >
+          기록을 마치려면 끼룩이에게 채팅 종료 의사를
+          밝혀주세요!
+          <br />
+          예) “이제 그만할래”, “잘 가”, “얘기 끝났어”
+        </Text>
+
         {messages.map((message, idx, arr) => (
           <MessageBox
             key={idx}
