@@ -21,8 +21,8 @@ function Add({}: AddProps) {
       position={"relative"}
     >
       <AddHeader />
-
       <Box
+        mt={"56px"}
         flex={1}
         w={"100%"}
         px={"12px"}

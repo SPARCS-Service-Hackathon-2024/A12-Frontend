@@ -75,7 +75,15 @@ function ChatInput({
   const handleRecordClick = () => {};
 
   return (
-    <Flex px={"12px"} pb={"20px"} w={"100%"} gap={"8px"}>
+    <Flex
+      pt={"8px"}
+      px={"12px"}
+      pb={"20px"}
+      w={"100%"}
+      gap={"8px"}
+      bottom={0}
+      position={"sticky"}
+    >
       <Box
         mt={"4px"}
         onClick={
