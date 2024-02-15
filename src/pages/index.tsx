@@ -1,5 +1,7 @@
+import Main from "@/pageComponents/Main";
+
 export function IndexPage() {
-  return <></>;
+  return <Main />;
 }
 
 export default IndexPage;
