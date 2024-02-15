@@ -1,5 +1,9 @@
 import { greenPointColor } from "@/constants/color";
-import { LogoIcon, SideMenuIcon } from "@/svg";
+import {
+  LogoGreenIcon,
+  LogoIcon,
+  SideMenuIcon,
+} from "@/svg";
 import { Box, Flex, FlexProps } from "@chakra-ui/react";
 
 export interface HeaderProps {
@@ -21,7 +25,18 @@ function Header({ headerMode }: HeaderProps) {
       <SideMenuIcon />
     </Flex>
   ) : (
-    <Flex></Flex>
+    <Flex
+      px={"20px"}
+      h={"93px"}
+      pb={"22px"}
+      justify={"space-between"}
+      align={"flex-end"}
+      direction={"row"}
+      bg={"white"}
+    >
+      <LogoGreenIcon />
+      <SideMenuIcon />
+    </Flex>
   );
 }
 

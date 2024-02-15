@@ -10,7 +10,3 @@ function StorybookPage({}: StorybookPageProps) {
 }
 
 export default StorybookPage;
-
-StorybookPage.getLayout = (page: ReactNode) => {
-  return <Layout>{page}</Layout>;
-};

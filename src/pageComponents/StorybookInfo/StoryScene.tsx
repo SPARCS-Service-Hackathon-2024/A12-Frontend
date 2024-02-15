@@ -11,12 +11,10 @@ export interface StorySceneProps {
 function StoryScene({ story }: StorySceneProps) {
   const {
     createdAt,
-    familyName,
+
     imageUrl,
-    priority,
-    projectName,
+
     text,
-    userName,
     wavUrl,
   } = story;
 
@@ -46,14 +44,16 @@ function StoryScene({ story }: StorySceneProps) {
       <Text fontSize={"16px"} color={"#bababa"}>
         {text}
       </Text>
+
       <Flex
         pt={"8px"}
         h={"84px"}
         w={"100%"}
-        position={"absolute"}
         px={"20px"}
-        bottom={0}
-        left={0}
+        // position={"absolute"}
+        // bottom={0}
+        // left={0}
+        mt={"24px"}
         align={"flex-start"}
         justify={"space-between"}
         borderTopWidth={"1px"}
