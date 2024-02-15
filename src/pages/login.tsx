@@ -1,6 +1,3 @@
-import { ReactNode } from "react";
-
-import { Layout } from "@/components";
 import Login from "@/pageComponents/Login";
 
 function LoginPage() {
@@ -8,7 +5,3 @@ function LoginPage() {
 }
 
 export default LoginPage;
-
-LoginPage.getLayout = (page: ReactNode) => {
-  return <Layout>{page}</Layout>;
-};
