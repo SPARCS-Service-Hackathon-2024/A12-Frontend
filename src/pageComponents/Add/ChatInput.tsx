@@ -3,14 +3,26 @@ import {
   IconButton,
   Textarea,
 } from "@chakra-ui/react";
-import { ChangeEvent, useState } from "react";
+import {
+  ChangeEvent,
+  Dispatch,
+  SetStateAction,
+  useState,
+} from "react";
 import { FaArrowRight } from "react-icons/fa";
 import RecordingButton from "./RecordingButton";
 import axios from "axios";
+import { Message } from "@/components";
 
-export interface ChatInputProps {}
+export interface ChatInputProps {
+  setIsWaitingReply: Dispatch<SetStateAction<boolean>>;
+  setMessages: Dispatch<SetStateAction<Message[]>>;
+}
 
-function ChatInput({}: ChatInputProps) {
+function ChatInput({
+  setIsWaitingReply,
+  setMessages,
+}: ChatInputProps) {
   const [text, setText] = useState<string>("");
 
   const handleInputChange = (
@@ -20,6 +32,23 @@ function ChatInput({}: ChatInputProps) {
   };
 
   const handleSendClick = async () => {
+    const newUserMessage: Message = {
+      text,
+      isBot: false,
+    };
+    const newBotMessage = {
+      text: "",
+      isBot: true,
+    };
+
+    setText("");
+    setMessages((prev) => [
+      ...prev,
+      newUserMessage,
+      newBotMessage,
+    ]);
+
+    setIsWaitingReply(true);
     const payload = {
       user: "user1",
       text,
@@ -27,9 +56,17 @@ function ChatInput({}: ChatInputProps) {
       is_text: true,
     };
 
-    const res = await axios.post("/chat", payload);
+    const { data } = await axios.post("/chat", payload);
 
-    console.log(res);
+    setMessages((prev) => {
+      const lastBotMessage = prev.pop()!;
+      lastBotMessage.text = data.text;
+      prev.push(lastBotMessage);
+
+      return prev;
+    });
+
+    setIsWaitingReply(false);
   };
 
   return (
