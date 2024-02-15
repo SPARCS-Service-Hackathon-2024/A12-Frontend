@@ -1,6 +1,8 @@
+import axios from "axios";
+import * as Yup from "yup";
+import { useRouter } from "next/router";
 import { Button } from "@chakra-ui/react";
 import { Formik, Form, FormikHelpers } from "formik";
-import * as Yup from "yup";
 
 import { CreateUserPayload } from "@/types";
 import { InputField } from "@/components";
@@ -8,13 +10,19 @@ import { InputField } from "@/components";
 export interface RegisterProps {}
 
 function Register({}: RegisterProps) {
-  const onSubmit = (
+  const router = useRouter();
+
+  const onSubmit = async (
     values: CreateUserPayload,
     helper: FormikHelpers<CreateUserPayload>
   ) => {
-    console.log(values);
+    const res = await axios.post("/register", values);
 
-    helper.setSubmitting(false);
+    if (res.status === 200) {
+      router.push("/login");
+    } else {
+      helper.setSubmitting(false);
+    }
   };
 
   return (

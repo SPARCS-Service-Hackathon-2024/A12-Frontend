@@ -1,5 +1,12 @@
+import axios from "axios";
+import { useRouter } from "next/router";
 import { Button } from "@chakra-ui/react";
-import { Formik, Form, FormikHelpers } from "formik";
+import {
+  Formik,
+  Form,
+  FormikHelpers,
+  FormikErrors,
+} from "formik";
 
 import { LoginUserPayload } from "@/types";
 import { InputField } from "@/components";
@@ -7,14 +14,22 @@ import { InputField } from "@/components";
 export interface LoginProps {}
 
 function Login({}: LoginProps) {
-  const onSubmit = (
+  const router = useRouter();
+
+  const onSubmit = async (
     values: LoginUserPayload,
     helper: FormikHelpers<LoginUserPayload>
   ) => {
-    console.log(values);
+    const res = await axios.post("/login", values);
+    console.log("res: ", res);
 
-    helper.setSubmitting(false);
+    if (res.status === 200) {
+      router.push("/home");
+    } else {
+      helper.setSubmitting(false);
+    }
   };
+
   return (
     <Formik<LoginUserPayload>
       initialValues={initialValues}
