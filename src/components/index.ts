@@ -6,3 +6,6 @@ export * from "./MessageBox";
 
 export { default as InputField } from "./InputField";
 export * from "./InputField";
+
+export { default as BottomSheet } from "./BottomSheet";
+export * from "./BottomSheet";

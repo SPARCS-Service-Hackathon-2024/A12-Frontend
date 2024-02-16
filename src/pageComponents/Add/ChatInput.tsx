@@ -10,7 +10,7 @@ import axios from "axios";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 
-import { Message } from "@/components";
+import { BottomSheet, Message } from "@/components";
 import {
   AttachFileIcon,
   RecordingButtonIcon,
@@ -34,6 +34,7 @@ function ChatInput({
 
   const [text, setText] = useState<string>("");
   const isTexting = text.trim() !== "";
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleInputChange = (
     e: ChangeEvent<HTMLTextAreaElement>
@@ -87,7 +88,17 @@ function ChatInput({
     }
   };
 
-  const handleRecordClick = () => {};
+  const handleRecordClick = () => {
+    setIsOpen(true);
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
+  const renderContent = () => {
+    return <Box h={"300px"}>hhh</Box>;
+  };
 
   return (
     <Flex
@@ -139,6 +150,12 @@ function ChatInput({
           </Box>
         )}
       </Flex>
+
+      <BottomSheet
+        isOpen={isOpen}
+        onClose={handleClose}
+        renderContent={renderContent}
+      />
     </Flex>
   );
 }
