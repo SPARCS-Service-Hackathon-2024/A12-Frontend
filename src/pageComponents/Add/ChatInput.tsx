@@ -16,6 +16,7 @@ import {
   RecordingButtonIcon,
   SendButtonIcon,
 } from "@/svg";
+import RecordingButton from "./RecordingButton";
 
 export interface ChatInputProps {
   messages: Message[];
@@ -97,7 +98,7 @@ function ChatInput({
   };
 
   const renderContent = () => {
-    return <Box h={"300px"}>hhh</Box>;
+    return <RecordingButton handleClose={handleClose} />;
   };
 
   return (
