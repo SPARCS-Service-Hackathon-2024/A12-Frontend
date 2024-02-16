@@ -22,9 +22,10 @@ function FamilyMembers({
       width={"100%"}
       wrap={"nowrap"}
     >
-      {familyMembers.map((familyMember, idx) => (
-        <Member key={idx} user={familyMember} />
-      ))}
+      {familyMembers &&
+        familyMembers.map((familyMember, idx) => (
+          <Member key={idx} user={familyMember} />
+        ))}
 
       <Flex
         display={"inline-flex"}

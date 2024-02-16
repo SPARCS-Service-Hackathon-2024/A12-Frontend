@@ -17,7 +17,7 @@ function Member({ user }: MemberProps) {
       marginRight={"16px"}
     >
       <DefaultAvatar width={"60px"} height={"60px"} />
-      <Text fontSize={"14px"}>{user.name}</Text>
+      <Text fontSize={"14px"}>{user?.name}</Text>
     </Flex>
   );
 }

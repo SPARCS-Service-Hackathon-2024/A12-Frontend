@@ -1,13 +1,42 @@
 import { Box, Text } from "@chakra-ui/react";
+import { useRouter } from "next/router";
+
 import FamilyMembers from "./FamilyMembers";
 import StoryTopic from "./StoryTopic";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export interface HomeProps {}
 
 function Home({}: HomeProps) {
+  const router = useRouter();
+
+  const familyName = router.query.familyName;
+
+  const [userNames, setUserNames] = useState<string[]>([]);
+
+  useEffect(() => {
+    const loadMembers = async () => {
+      const { data } = await axios.post(
+        "/get_all_user_in_family",
+        {
+          familyName,
+        }
+      );
+
+      setUserNames(
+        data.userNames.map((userName: string) => ({
+          name: userName,
+        }))
+      );
+    };
+
+    if (familyName) loadMembers();
+  }, [familyName]);
+
   return (
     <Box h={"100%"} overflow={"scroll"} pb={"24px"}>
-      <FamilyMembers familyMembers={members as any} />
+      <FamilyMembers familyMembers={userNames as any} />
       <Text
         fontSize={"20px"}
         fontWeight={800}
