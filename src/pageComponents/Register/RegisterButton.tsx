@@ -11,7 +11,7 @@ function RegisterButton({
   ...rest
 }: RegisterButtonProps) {
   return (
-    <Box position={"fixed"} bottom={"108px"}>
+    <Box position={"fixed"} bottom={"90px"}>
       <Button
         {...rest}
         h={"56px"}

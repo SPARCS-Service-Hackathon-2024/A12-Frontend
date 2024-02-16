@@ -51,14 +51,16 @@ function Register({}: RegisterProps) {
       backgroundRepeat={"round"}
       backgroundImage={`/images/register${step}_background.png`}
     >
-      <Box
-        top={"20px"}
-        left={"20px"}
-        position={"absolute"}
-        onClick={() => setStep(1)}
-      >
-        <ArrowBack2Icon />
-      </Box>
+      {step === 2 && (
+        <Box
+          top={"20px"}
+          left={"20px"}
+          position={"absolute"}
+          onClick={() => setStep(1)}
+        >
+          <ArrowBack2Icon />
+        </Box>
+      )}
       <Box
         top={"20px"}
         right={"20px"}
