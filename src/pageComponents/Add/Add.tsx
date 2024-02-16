@@ -83,6 +83,6 @@ function Add({}: AddProps) {
 export default Add;
 
 const defaultMessage = {
-  text: "안녕하세요",
+  text: "오늘은 무슨 추억을 기록해볼까요?",
   isBot: true,
 };
